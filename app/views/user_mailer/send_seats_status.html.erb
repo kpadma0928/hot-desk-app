@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+    	table td, table th {
+			  border: 1px solid #ddd;
+			  padding: 8px;
+			}
+
+			table tr:nth-child(even){background-color: #f2f2f2;}
+
+			table tr:hover {background-color: #ddd;}
+
+			table th {
+			  padding-top: 12px;
+			  padding-bottom: 12px;
+			  text-align: left;
+			  background-color: #337ac0c7;
+			  color: white;
+			}
+    </style>
+  </head>
+  <body>
+    <h1>Hi <%= @user.name %></h1>
+    <p><b>Seats Assigned Users</b></p><br>
+    <table class="table table-striped">
+        <thead  class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Desk</th>
+            <th>From/To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @seats_assigned_users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+				<td><%= user.seat.try(:name) || ""%></td>
+				<td><%= user.try(:seat_period) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br><br>
+      <p><b>Available Seats</b></p><br>
+	    <table class="table table-striped">
+	        <thead  class="thead-dark">
+	          <tr>
+	            <th>Name</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	            <tr>
+	              <td><%= @available_seats.map(&:name).join(", ") %></td>
+	            </tr>
+	        </tbody>
+	      </table>
+  </body>
+</html>

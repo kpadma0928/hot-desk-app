@@ -1,0 +1,7 @@
+
+<% if user_signed_in? %>
+  <li><%= link_to 'Staffs', users_path %></li>
+  <% if current_user.admin? %>
+  		<li><%= link_to 'Seats', seats_path %></li>
+  <% end %>
+<% end %>

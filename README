@@ -1,0 +1,3 @@
+run rake db:seed to create admin user
+cronjob created to send daily bookings status
+admin can create seats

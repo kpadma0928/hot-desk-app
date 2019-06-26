@@ -1,0 +1,28 @@
+<div class="authform">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+    <h3><%= t('login.login')%></h3>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <%- if devise_mapping.registerable? %>
+        <%= link_to t("login.signup"), new_registration_path(resource_name), class: 'right'  %>
+      <% end -%>
+      <%= f.label t("login.email") %>
+      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%- if devise_mapping.recoverable? %>
+        <%= link_to t("login.forgot_pwd"), new_password_path(resource_name), class: 'right' %>
+      <% end -%>
+      <%= f.label t("login.password") %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+      <%= f.submit t("login.login"), :class => 'btn btn-primary right' %>
+      <% if devise_mapping.rememberable? -%>
+        <div class="checkbox" style="width:150px">
+          <label>
+            <%= f.check_box :remember_me %> <%=t("login.remember_me")%>
+          </label>
+        </div>
+      <% end -%>
+  <% end %>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="column">
+		<h2>Staff Details</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>Name:</td>
+					<td><%= @user.name if @user.name %></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><%= @user.email if @user.email %></td>
+				</tr>
+				<tr>
+					<td>Desk:</td>
+					<td><%= @user.seat.name if @user.seat %></td>
+				</tr>
+				<tr>
+					<td>Date:</td>
+					<td><%= @user.seat_period %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+  </div>
+</div>	
+		

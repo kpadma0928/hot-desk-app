@@ -1,0 +1,4 @@
+<td><%= user.name %></td>
+<td><%= user.seat.try(:name) || ""%></td>
+<td><%= user.try(:seat_period) %></td>
+<td><%= link_to "Show", user %></td>

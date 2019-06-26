@@ -1,0 +1,46 @@
+<%# navigation styled for Bootstrap 3.0 %>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        <%= render 'layouts/nav_links_for_auth' %>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Language
+          </a>
+          <ul class="dropdown-menu">
+            <% locale_change_links.each do |locale_change_link| %>
+
+              <li><a class="dropdown-item" href="<%= locale_change_link[:url]%>"><%= locale_change_link[:title]%></a></li>
+            <% end %>  
+          </ul>
+        </li>
+        
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "Logged in, Hi #{current_user.name}" , "" %>
+          </li>
+          <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+          <li><%= link_to 'Log out', destroy_user_session_path, :method=>'delete' %></li>
+        <% else %>
+          <li><%= link_to 'Log in', new_user_session_path %></li>
+          <li><%= link_to 'Register', new_user_registration_path %></li>
+        <% end %> 
+      </ul>
+    </div>
+        
+</nav>
+
+
+
